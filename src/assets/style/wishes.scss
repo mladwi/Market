@@ -1,0 +1,70 @@
+.liked_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.favourite_h2 {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.wish_card {
+  width: 250px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border-radius: 8px;
+  }
+
+  .wish_details {
+    h3 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #555;
+      margin: 5px 0;
+    }
+
+    button {
+      background-color: #ff6b6b;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #e63946;
+      }
+    }
+  }
+}
+
+.favourite_p {
+  text-align: center;
+  font-size: 1.25rem;
+  color: #777;
+}

@@ -1,0 +1,40 @@
+.category-list {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  .category_card {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px #000;
+    border-radius: 5px;
+    transition: 0.5s;
+    img {
+      width: 80px;
+    }
+    p {
+      margin-top: 10px;
+    }
+    &:hover {
+      background-color: #33969f;
+      border: none;
+    }
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: black;
+  }
+}

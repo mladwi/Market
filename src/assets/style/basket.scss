@@ -1,0 +1,84 @@
+.total_section {
+  margin-top: 20px;
+  text-align: center;
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .order_button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #218838;
+    }
+  }
+
+  .order_message {
+    margin-top: 10px;
+    color: #28a745;
+    font-size: 1.25rem;
+  }
+}
+
+.basket_list {
+  display: flex;
+}
+
+.basket_list li {
+  width: 250px;
+  gap: 10px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border-radius: 8px;
+  }
+
+  button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #e63946;
+    }
+  }
+}
+.basket_p {
+  text-align: center;
+  font-size: 1.25rem;
+  color: #777;
+}
+.basket_h2 {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 20px;
+}

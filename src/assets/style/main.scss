@@ -1,0 +1,32 @@
+@import "./header.scss";
+@import "./navbar.scss";
+@import "./login.scss";
+@import "./fonts.scss";
+@import "./products.scss";
+@import "./category.scss";
+@import "./contact.scss";
+@import "./product-details.scss";
+@import "./wishes.scss";
+@import "./basket.scss";
+@import "./responsive.scss";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.container {
+  max-width: 1140px;
+  width: 100%;
+  padding: 0;
+  margin: 0 auto;
+}
+
+img {
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+}

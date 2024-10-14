@@ -1,0 +1,96 @@
+.contact_cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-top: 150px;
+  .icon_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .contact_card:nth-child(1) {
+    width: 300px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    background: linear-gradient(
+      90deg,
+      rgb(0, 174, 255) 0%,
+      rgba(0, 108, 237, 1) 78%
+    );
+    .telegram_icon {
+      font-size: 30px;
+      color: white;
+    }
+    h2 {
+      font-family: Poppins-Semibold;
+      color: white;
+      font-size: 20px;
+    }
+    a {
+      margin-top: 4px;
+      text-decoration: none;
+      margin-left: 37px;
+      color: white;
+    }
+  }
+}
+.contact_card:nth-child(2) {
+  width: 300px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 10px;
+  background: #833ab4;
+  background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+  .instagram_icon {
+    font-size: 30px;
+    color: white;
+  }
+  h2 {
+    font-family: Poppins-Semibold;
+    color: white;
+    font-size: 20px;
+  }
+  a {
+    margin-top: 4px;
+    text-decoration: none;
+    margin-left: 37px;
+    color: white;
+  }
+}
+.contact_card:nth-child(3) {
+  width: 300px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 10px;
+  background: #833ab4;
+ background-color: #a51717;
+  .email_icon {
+    font-size: 35px;
+    color: white;
+  }
+  h2 {
+    font-family: Poppins-Semibold;
+    color: white;
+    font-size: 20px;
+  }
+  a {
+    margin-top: 4px;
+    text-decoration: none;
+    margin-left: 37px;
+    color: white;
+  }
+}
+
