@@ -30,7 +30,11 @@
 }
 
 .basket_list {
+  margin-top: 30px;
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 35px;
 }
 
 .basket_list li {
@@ -70,6 +74,11 @@
     &:hover {
       background-color: #e63946;
     }
+  }
+  .quality_box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
   }
 }
 .basket_p {

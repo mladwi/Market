@@ -24,7 +24,7 @@ export default function ProductList() {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null); // Correctly initialize setSelectedCategory
   const productsPerPage = 15;
   const navigate = useNavigate();
 
@@ -57,6 +57,7 @@ export default function ProductList() {
     } catch (error) {
       console.log(error);
     }
+    setSelectedCategory(category); // Set the selected category
     setCurrentPage(1);
   };
 
@@ -73,14 +74,58 @@ export default function ProductList() {
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
+  const renderPageNumbers = () => {
+    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+    const pageNumbers = [];
+    const maxPageLimit = currentPage + 2;
+    const minPageLimit = currentPage - 2;
+
+    for (let i = 1; i <= totalPages; i++) {
+      if (i >= minPageLimit && i <= maxPageLimit) {
+        pageNumbers.push(
+          <button
+            key={i}
+            onClick={() => paginate(i)}
+            className={i === currentPage ? "active" : ""}
+          >
+            {i}
+          </button>
+        );
+      }
+    }
+
+    return <>{pageNumbers}</>;
+  };
   return (
     <div className="container">
       <div className="category-list">
         <div className="category-list_box1">
           <h2>Browse By Category</h2>
         </div>
-
-        <Swiper spaceBetween={10} slidesPerView={7}>
+        <Swiper
+          spaceBetween={10}
+          slidesPerView={7}
+          breakpoints={{
+            850: {
+              slidesPerView: 7,
+            },
+            640: {
+              slidesPerView: 5,
+            },
+            500: {
+              slidesPerView: 4,
+            },
+            400: {
+              slidesPerView: 2.8,
+            },
+            320: {
+              slidesPerView: 2,
+            },
+            200: {
+              slidesPerView: 1.8,
+            }
+          }}
+        >
           <SwiperSlide>
             <div
               className="category_card"
@@ -209,7 +254,6 @@ export default function ProductList() {
           </SwiperSlide>
         </Swiper>
       </div>
-
       <div className="product-list">
         {loading
           ? Array.from({ length: productsPerPage }).map((_, index) => (
@@ -227,20 +271,11 @@ export default function ProductList() {
                 <img src={product.thumbnail} alt="" className="product-image" />
                 <h3>{product.title}</h3>
                 <h4>{product.category}</h4>
-                <p>Price: {product.price}</p>
+                <p>Price: {product.price} $</p>
               </div>
             ))}
       </div>
-
-      <div className="pagination">
-        {[
-          ...Array(Math.ceil(filteredProducts.length / productsPerPage)).keys(),
-        ].map((number) => (
-          <button key={number} onClick={() => paginate(number + 1)}>
-            {number + 1}
-          </button>
-        ))}
-      </div>
+      <div className="pagination">{renderPageNumbers()}</div>
     </div>
   );
 }

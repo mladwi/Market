@@ -3,10 +3,13 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 const Basket = () => {
-  const { cart, removeFromCart, clearCart } = useCart();
+  const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
   const [orderPlaced, setOrderPlaced] = useState(false);
 
-  const totalPrice = cart.reduce((total, product) => total + product.price, 0);
+  const totalPrice = cart.reduce(
+    (total, product) => total + product.price * product.quantity,
+    0
+  );
 
   const handleOrder = () => {
     setOrderPlaced(true);
@@ -21,6 +24,10 @@ const Basket = () => {
     removeFromCart(productId);
   };
 
+  const handleQuantityChange = (productId: string, amount: number) => {
+    updateQuantity(productId, amount);
+  };
+
   return (
     <div className="container">
       <h2 className="basket_h2">Basket</h2>
@@ -33,6 +40,18 @@ const Basket = () => {
               <li key={product.id}>
                 {product.title} - ${product.price}
                 <img src={product.thumbnail} alt={product.title} />
+                <div className="quality_box">
+                  <button
+                    onClick={() => handleQuantityChange(product.id, -1)}
+                    disabled={product.quantity <= 1}
+                  >
+                    -
+                  </button>
+                  <span>{product.quantity}</span>
+                  <button onClick={() => handleQuantityChange(product.id, 1)}>
+                    +
+                  </button>
+                </div>
                 <button onClick={() => handleRemoveFromCart(product.id)}>
                   Remove
                 </button>

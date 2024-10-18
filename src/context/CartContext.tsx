@@ -11,6 +11,7 @@ interface Product {
   title: string;
   price: number;
   thumbnail: string;
+  quantity: number;
 }
 
 interface CartContextType {
@@ -18,11 +19,13 @@ interface CartContextType {
   wishes: Product[];
   addToCart: (product: Product) => void;
   removeFromCart: (productId: string) => void;
-  clearCart: () => void; // clearCart funksiyasini qo'shdik
+  clearCart: () => void;
   addToWishes: (product: Product) => void;
   removeFromWishes: (productId: string) => void;
+  updateQuantity: (productId: string, amount: number) => void;
 }
 
+// CartContext yaratamiz
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const useCart = () => {
@@ -58,9 +61,11 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     setCart((prev) => {
       const exists = prev.some((item) => item.id === product.id);
       if (!exists) {
-        return [...prev, product];
+        return [...prev, { ...product, quantity: 1 }];
       }
-      return prev;
+      return prev.map((item) =>
+        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+      );
     });
   };
 
@@ -69,7 +74,17 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   const clearCart = () => {
-    setCart([]); // Savatchani tozalash
+    setCart([]);
+  };
+
+  const updateQuantity = (productId: string, amount: number) => {
+    setCart((prev) =>
+      prev.map((product) =>
+        product.id === productId
+          ? { ...product, quantity: product.quantity + amount }
+          : product
+      )
+    );
   };
 
   const addToWishes = (product: Product) => {
@@ -85,7 +100,6 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   const removeFromWishes = (productId: string) => {
     setWishes((prev) => prev.filter((product) => product.id !== productId));
   };
-
   return (
     <CartContext.Provider
       value={{
@@ -93,9 +107,10 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
         wishes,
         addToCart,
         removeFromCart,
-        clearCart, // clearCart funksiyasini Providerga qo'shdik
+        clearCart,
         addToWishes,
         removeFromWishes,
+        updateQuantity,
       }}
     >
       {children}

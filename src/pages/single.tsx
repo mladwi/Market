@@ -38,14 +38,14 @@ export default function ProductList() {
   const handleAddToWishes = () => {
     if (product) {
       addToWishes(product as any);
-      toast.success(`добавлен в избранное`);
+      toast.success(`Added to favorites`);
     }
   };
 
   const handleAddToCart = () => {
     if (product) {
       addToCart(product as any);
-      toast.success(`добавлен в корзину`);
+      toast.success(`Added to basket`);
     }
   };
 
@@ -68,7 +68,7 @@ export default function ProductList() {
           <div className="product_details_info">
             <h2>{product.title}</h2>
             <h4>{product.description}</h4>
-            <p>Price: {product.price}</p>
+            <p>Price: {product.price} $</p>
             <div className="product_details_buttons">
               <button className="Buy" onClick={handleAddToCart}>
                 Add to Basket <SlBasket />

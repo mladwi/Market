@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../assets/images/logo.png";
+import Logo from "../assets/images/Logo.jpg";
 import Wishes from "../assets/images/wishes";
 import Cart from "../assets/images/cart";
 import axios from "axios";
