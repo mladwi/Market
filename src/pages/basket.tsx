@@ -1,4 +1,4 @@
-import { useCart } from "../context/CartContext";
+import { useCart } from "../Store/useCardStore";
 import { useState } from "react";
 import toast from "react-hot-toast";
 

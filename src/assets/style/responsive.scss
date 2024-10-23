@@ -49,3 +49,26 @@
     }
   }
 }
+
+@media (max-width: 500px) {
+  .nav_links:active {
+    margin-top: 40px;
+  }
+  .product-details {
+    gap: 0;
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 400px) {
+  .navbar {
+    img {
+      width: 55px;
+    }
+  }
+  .category-list_box1 {
+    h2 {
+      margin-bottom: 20px;
+    }
+  }
+}

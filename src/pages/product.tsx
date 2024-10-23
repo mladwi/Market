@@ -24,7 +24,7 @@ export default function ProductList() {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null); // Correctly initialize setSelectedCategory
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const productsPerPage = 15;
   const navigate = useNavigate();
 
@@ -57,7 +57,7 @@ export default function ProductList() {
     } catch (error) {
       console.log(error);
     }
-    setSelectedCategory(category); // Set the selected category
+    setSelectedCategory(category);
     setCurrentPage(1);
   };
 
@@ -79,9 +79,12 @@ export default function ProductList() {
     const pageNumbers = [];
     const maxPageLimit = currentPage + 2;
     const minPageLimit = currentPage - 2;
-
     for (let i = 1; i <= totalPages; i++) {
-      if (i >= minPageLimit && i <= maxPageLimit) {
+      if (
+        i === 1 ||
+        i === totalPages ||
+        (i >= minPageLimit && i <= maxPageLimit)
+      ) {
         pageNumbers.push(
           <button
             key={i}
@@ -91,6 +94,14 @@ export default function ProductList() {
             {i}
           </button>
         );
+      }
+
+      if (i === minPageLimit - 1 && minPageLimit > 2) {
+        pageNumbers.push(<span key="left-ellipsis">...</span>);
+      }
+
+      if (i === maxPageLimit + 1 && maxPageLimit < totalPages - 1) {
+        pageNumbers.push(<span key="right-ellipsis">...</span>);
       }
     }
 
@@ -123,7 +134,7 @@ export default function ProductList() {
             },
             200: {
               slidesPerView: 1.8,
-            }
+            },
           }}
         >
           <SwiperSlide>

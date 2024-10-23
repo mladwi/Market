@@ -4,16 +4,15 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { Api } from "../modules";
 import { IProduct } from "../modules/products/types";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../Store/useCardStore";
 import toast from "react-hot-toast";
 import { SlBasket } from "react-icons/sl";
 import { MdFavoriteBorder } from "react-icons/md";
-
 export default function ProductList() {
   const [product, setProduct] = useState<IProduct | null>(null);
   const [loading, setLoading] = useState(true);
   let { productID } = useParams<{ productID: string }>();
-  const { addToWishes, addToCart } = useCart();
+  const { addToWishes, addToCart, cart, wishes } = useCart();
 
   const getSingleProduct = async () => {
     try {
@@ -37,15 +36,25 @@ export default function ProductList() {
 
   const handleAddToWishes = () => {
     if (product) {
-      addToWishes(product as any);
-      toast.success(`Added to favorites`);
+      const existsInWishes = wishes.some((item) => item.id === product.id);
+      if (existsInWishes) {
+        toast.error(`This product is already in your liked list`);
+      } else {
+        addToWishes(product as any);
+        toast.success(`Added to favorites`);
+      }
     }
   };
 
   const handleAddToCart = () => {
     if (product) {
-      addToCart(product as any);
-      toast.success(`Added to basket`);
+      const existsInCart = cart.some((item) => item.id === product.id);
+      if (existsInCart) {
+        toast.error(`This product is already in your basket`);
+      } else {
+        addToCart(product as any);
+        toast.success(`Added to basket`);
+      }
     }
   };
 
