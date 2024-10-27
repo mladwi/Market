@@ -8,10 +8,11 @@ import { useCart } from "../Store/useCardStore";
 import toast from "react-hot-toast";
 import { SlBasket } from "react-icons/sl";
 import { MdFavoriteBorder } from "react-icons/md";
+
 export default function ProductList() {
   const [product, setProduct] = useState<IProduct | null>(null);
   const [loading, setLoading] = useState(true);
-  let { productID } = useParams<{ productID: string }>();
+  const { productID } = useParams<{ productID: string }>();
   const { addToWishes, addToCart, cart, wishes } = useCart();
 
   const getSingleProduct = async () => {
@@ -34,26 +35,30 @@ export default function ProductList() {
     getSingleProduct();
   }, [productID]);
 
-  const handleAddToWishes = () => {
+  const handleAddToCart = () => {
     if (product) {
-      const existsInWishes = wishes.some((item) => item.id === product.id);
-      if (existsInWishes) {
-        toast.error(`This product is already in your liked list`);
+      const existsInCart = cart.some(
+        (item) => String(item.id) === String(product.id)
+      );
+      if (existsInCart) {
+        toast.error("This product is already in your basket");
       } else {
-        addToWishes(product as any);
-        toast.success(`Added to favorites`);
+        addToCart(product as any);
+        toast.success("Added to basket");
       }
     }
   };
 
-  const handleAddToCart = () => {
+  const handleAddToWishes = () => {
     if (product) {
-      const existsInCart = cart.some((item) => item.id === product.id);
-      if (existsInCart) {
-        toast.error(`This product is already in your basket`);
+      const existsInWishes = wishes.some(
+        (item) => String(item.id) === String(product.id)
+      );
+      if (existsInWishes) {
+        toast.error("This product is already in your liked list");
       } else {
-        addToCart(product as any);
-        toast.success(`Added to basket`);
+        addToWishes(product as any);
+        toast.success("Added to favorites");
       }
     }
   };
