@@ -50,7 +50,7 @@ export const useCart = create<CartState>()(
         set({
           cart: get().cart.map((product) =>
             product.id === productId
-              ? { ...product, quantity: product.quantity + amount }
+              ? { ...product, quantity: Math.max(product.quantity + amount, 1) }
               : product
           ),
         });

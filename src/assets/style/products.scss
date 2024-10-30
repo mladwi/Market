@@ -6,6 +6,8 @@
 }
 
 .product-card {
+  height: auto;
+  position: relative;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -88,4 +90,22 @@
       color: white;
     }
   }
+}
+.product-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.star {
+  color: lightgray; /* Default star color */
+  font-size: 1.2rem; /* Adjust star size */
+}
+
+.star.filled {
+  color: gold;
+}
+
+.rating-text {
+  margin-left: 5px; /* Space between stars and rating text */
 }

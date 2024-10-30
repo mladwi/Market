@@ -1,12 +1,12 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 export const API = "https://dummyjson.com";
 
 export const http = axios.create({
-  baseURL: "https://dummyjson.com",
+  baseURL: API,
 });
 
 http.interceptors.response.use(
-  (response) => response,
+  (response: AxiosResponse) => response,
   (error) => Promise.reject(error)
 );

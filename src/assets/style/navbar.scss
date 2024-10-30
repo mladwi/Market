@@ -107,11 +107,12 @@
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 60px;
+        top: 0px;
         left: 0;
         right: 0;
         background-color: #000000;
         padding: 20px 20px;
+        z-index: 2;
 
         &.active {
           display: flex;

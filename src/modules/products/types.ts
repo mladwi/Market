@@ -21,6 +21,7 @@ export interface IProduct {
   meta: Meta;
   images: string[];
   thumbnail: string;
+  stars: number;
 }
 
 export interface Dimensions {
