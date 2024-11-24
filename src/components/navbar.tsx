@@ -6,7 +6,7 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { SlBasket } from "react-icons/sl";
 import { AiOutlineClose } from "react-icons/ai";
 
-let API = "https://market-1.onrender.com/api/auth/protected";
+let API = "https://market777-1.onrender.com/api/auth/protected";
 
 const Navbar = () => {
   const [userName, setUserName] = useState<string | null>(null);
