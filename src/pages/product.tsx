@@ -278,7 +278,7 @@ export default function ProductList() {
               className="category_card"
               onClick={() => filterByCategory("mens-shoes")}
             >
-              <h1>Men Shoes</h1>
+              <h1>Men's Shoes</h1>
             </div>
           </SwiperSlide>
           <SwiperSlide>

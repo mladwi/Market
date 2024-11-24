@@ -8,7 +8,7 @@ import Single from "../pages/single";
 import Wishes from "../pages/liked";
 
 const Routes = () => {
-  const isAuthenticated = !!localStorage.getItem("token");
+  
 
   return (
     <Switch>
@@ -20,12 +20,11 @@ const Routes = () => {
         <Route index element={<Wishes />} />
         <Route path="*" element={<Navigate to={"/wishes"} />} />
       </Route>
-
       <Route path="/product/:productID" element={<Single />} />
-      <Route
-        path="cart"
-        element={isAuthenticated ? <Cart /> : <Navigate to="/sign-in" />}
-      />
+      <Route path="cart">
+        <Route index element={<Cart/>} />
+        <Route path="" element={<Navigate to={"/basket"} />} />
+        </Route>
     </Switch>
   );
 };
