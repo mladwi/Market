@@ -6,7 +6,7 @@ import Skeleton from "react-loading-skeleton";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import { useRef } from "react";
-import { Swiper as SwiperType } from "swiper";
+
 import { IoArrowBack, IoArrowForward, IoSearchSharp } from "react-icons/io5";
 
 export default function ProductList() {
@@ -16,7 +16,7 @@ export default function ProductList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [sortOption, setSortOption] = useState<string>("");
-  const swiperRef = useRef<SwiperType | null>(null);
+  const swiperRef = useRef<any>(null);
   const productsPerPage = 15;
   const navigate = useNavigate();
 
