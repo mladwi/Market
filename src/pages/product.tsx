@@ -5,20 +5,8 @@ import { IProduct } from "../modules/products/types";
 import Skeleton from "react-loading-skeleton";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
-import beauty from "../assets/images/beauty.png";
-import fourcooking from "../assets/images/four-cooking-accessories-set-for-kitchen.png";
-import furniture from "../assets/images/furniture.png";
-import grocery from "../assets/images/grocery.png";
-import laptop from "../assets/images/laptop.png";
-import mensclothing from "../assets/images/mens-clothing.png";
-import perfume from "../assets/images/perfume.png";
-import shelf from "../assets/images/shelf.png";
-import smart from "../assets/images/smart.png";
-import tablet from "../assets/images/tablet.png";
-import watch from "../assets/images/watch.png";
-import womanwatch from "../assets/images/woman2.png";
-import womanclothes from "../assets/images/woman-clothes.png";
-import womanjewelry from "../assets/images/woman.png";
+import { useRef } from "react";
+import { Swiper as SwiperType } from "swiper";
 import { IoArrowBack, IoArrowForward, IoSearchSharp } from "react-icons/io5";
 
 export default function ProductList() {
@@ -28,8 +16,23 @@ export default function ProductList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [sortOption, setSortOption] = useState<string>("");
+  const swiperRef = useRef<SwiperType | null>(null);
   const productsPerPage = 15;
   const navigate = useNavigate();
+
+  
+
+  const handlePrevClick = () => {
+    if (swiperRef.current) {
+      swiperRef.current.swiper.slidePrev();
+    }
+  };
+
+  const handleNextClick = () => {
+    if (swiperRef.current) {
+      swiperRef.current.swiper.slideNext();
+    }
+  };
 
   const getAllProducts = async () => {
     try {
@@ -157,6 +160,7 @@ export default function ProductList() {
 
   return (
     <div className="container">
+      <div className="label_search">
       <label className="search">
         <input
           value={searchKeyword}
@@ -170,13 +174,15 @@ export default function ProductList() {
         />
         <IoSearchSharp />
       </label>
+      </div>
       <div className="category-list">
         <div className="category-list_box1">
-          <h2>Browse By Category</h2>
+          <h2>By Category</h2>
         </div>
         <Swiper
           spaceBetween={10}
           slidesPerView={7}
+          ref={swiperRef}
           breakpoints={{
             850: {
               slidesPerView: 7,
@@ -200,10 +206,7 @@ export default function ProductList() {
         >
           <SwiperSlide>
             <div className="category_card" onClick={goHome}>
-              <img
-                src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxwxr-D-CVpoHP0vEXCYJF9u-yMLeKGl53pg&s"
-                alt="beauty"
-              />
+              <h1>Back</h1>
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -211,8 +214,7 @@ export default function ProductList() {
               className="category_card"
               onClick={() => filterByCategory("beauty")}
             >
-              <img src={beauty} alt="beauty" />
-              <p>Beauty</p>
+              <h1>Beauty</h1>
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -220,8 +222,7 @@ export default function ProductList() {
               className="category_card"
               onClick={() => filterByCategory("kitchen-accessories")}
             >
-              <img src={fourcooking} alt="four cooking" />
-              <p>Four Cooking</p>
+              <h1>For Cooking</h1>
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -229,8 +230,7 @@ export default function ProductList() {
               className="category_card"
               onClick={() => filterByCategory("groceries")}
             >
-              <img src={grocery} alt="grocery" />
-              <p>Grocery</p>
+              <h1>Grocery</h1>
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -238,8 +238,7 @@ export default function ProductList() {
               className="category_card"
               onClick={() => filterByCategory("laptops")}
             >
-              <img src={laptop} alt="laptop" />
-              <p>Laptop</p>
+              <h1>Laptop</h1>
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -247,8 +246,7 @@ export default function ProductList() {
               className="category_card"
               onClick={() => filterByCategory("mens-shirts")}
             >
-              <img src={mensclothing} alt="mens clothing" />
-              <p>Mens Clothing</p>
+              <h1>Men's wear</h1>
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -256,8 +254,7 @@ export default function ProductList() {
               className="category_card"
               onClick={() => filterByCategory("fragrances")}
             >
-              <img src={perfume} alt="perfume" />
-              <p>Perfume</p>
+              <h1>Perfume</h1>
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -265,8 +262,7 @@ export default function ProductList() {
               className="category_card"
               onClick={() => filterByCategory("furniture")}
             >
-              <img src={furniture} alt="furniture" />
-              <p>Furniture</p>
+              <h1>Furniture</h1>
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -274,8 +270,7 @@ export default function ProductList() {
               className="category_card "
               onClick={() => filterByCategory("home-decoration")}
             >
-              <img src={shelf} alt="shelf" />
-              <p>home decoration</p>
+              <h1>Home decoration</h1>
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -283,8 +278,7 @@ export default function ProductList() {
               className="category_card"
               onClick={() => filterByCategory("mens-shoes")}
             >
-              <img src={smart} alt="smart" />
-              <p>Men Shoes</p>
+              <h1>Men Shoes</h1>
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -292,8 +286,7 @@ export default function ProductList() {
               className="category_card"
               onClick={() => filterByCategory("tablets")}
             >
-              <img src={tablet} alt="tablet" />
-              <p>Tablet</p>
+              <h1>Tablet</h1>
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -301,8 +294,7 @@ export default function ProductList() {
               className="category_card"
               onClick={() => filterByCategory("mens-watches")}
             >
-              <img src={watch} alt="watch" />
-              <p>Men Watchs</p>
+              <h1>Men's Watches</h1>
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -310,8 +302,7 @@ export default function ProductList() {
               className="category_card "
               onClick={() => filterByCategory("womens-watches")}
             >
-              <img src={womanwatch} alt="woman watch" />
-              <p>Woman Watchs</p>
+              <h1>Women's Watches</h1>
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -319,8 +310,7 @@ export default function ProductList() {
               className="category_card"
               onClick={() => filterByCategory("womens-dresses")}
             >
-              <img src={womanclothes} alt="" />
-              <p>Womens Dresses</p>
+              <h1>Women's Dresses</h1>
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -328,11 +318,18 @@ export default function ProductList() {
               className="category_card"
               onClick={() => filterByCategory("womens-jewellery")}
             >
-              <img src={womanjewelry} alt="woman jewelry" />
-              <p>Woman Jewellery</p>
+              <h1>Women's Jewellery</h1>
             </div>
           </SwiperSlide>
         </Swiper>
+        <div className="pagination">
+        <button onClick={handlePrevClick} disabled={currentPage === - 1}>
+          <IoArrowBack />
+        </button>
+        <button onClick={handleNextClick} disabled={currentPage === Math.ceil(products.length / productsPerPage)}>
+          <IoArrowForward />
+        </button>
+      </div>
       </div>
       <div className="container">
         <div className="sort_box">

@@ -2,11 +2,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 40px 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
   border-bottom: 1px solid #b3b3b3;
+  background-color: #cfc172;
+  &_title{
+    font-family: Poppins-Regular;
+    font-size: 24px;
+    line-height: 20.07px;
+    color: black;
+  }
 
   img {
-    width: 80px;
+    width: 60px;
     cursor: pointer;
     user-select: none;
   }
@@ -27,15 +34,20 @@
         list-style: none;
 
         a {
+          font-family: Poppins-Medium;
           font-size: 16px;
           font-weight: 500;
           line-height: 24px;
           letter-spacing: 0;
           text-align: center;
           color: black;
-
+          
           &:hover {
-            border-bottom: 1px solid black;
+            border-bottom: 2px solid black;
+            border-radius: 2px;
+            display: block;
+            transition: 0.5s;
+            width: 100%;
           }
         }
       }

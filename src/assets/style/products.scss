@@ -3,12 +3,13 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 24px;
   padding: 20px;
+  background-color: #CFC172;
 }
 
 .product-card {
   height: auto;
   position: relative;
-  background-color: #fff;
+  background-color: #33969f;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -28,20 +29,22 @@
   }
 
   h3 {
+    font-family: Poppins-Regular;
     font-size: 20px;
     margin: 12px 0;
-    color: #333;
+    color: #fff;
   }
   h4 {
     font-family: Poppins-Regular;
     font-size: 15px;
     margin-bottom: 8px;
-    color: #999;
+    color: tan;
   }
 
   p {
+    font-family: Poppins-Medium;
     font-size: 17px;
-    color: #757575;
+    color: tan;
     margin-bottom: 12px;
   }
 
@@ -67,14 +70,16 @@
 }
 
 .pagination {
-  margin-top: 20px;
+  padding-top: 20px;
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 100px;
+  padding-bottom: 50px;
+  background-color: #33969f;
 
   button {
-    background-color: #f1f1f1;
+    background-color: #CFC172;
+    color: black;
     border: none;
     padding: 8px 16px;
     border-radius: 4px;
@@ -82,12 +87,12 @@
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: #ddd;
+      background-color: #fff;
     }
 
     &.active {
       background-color: #3498db;
-      color: white;
+      color: #fff;
     }
   }
 }
@@ -98,8 +103,8 @@
 }
 
 .star {
-  color: lightgray; /* Default star color */
-  font-size: 1.2rem; /* Adjust star size */
+  color: lightgray;
+  font-size: 1.2rem;
 }
 
 .star.filled {
@@ -107,5 +112,5 @@
 }
 
 .rating-text {
-  margin-left: 5px; /* Space between stars and rating text */
+  margin-left: 5px; 
 }

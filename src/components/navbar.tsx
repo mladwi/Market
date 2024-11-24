@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../assets/images/Logo.jpg";
+
 import axios from "axios";
 import { MdFavoriteBorder } from "react-icons/md";
 import { SlBasket } from "react-icons/sl";
-import { AiOutlineClose } from "react-icons/ai"; // Close icon import
+import { AiOutlineClose } from "react-icons/ai";
 
-let API = "https://market777-1.onrender.com/api/auth/protected";
+let API = "https://market-1.onrender.com/api/auth/protected";
 
 const Navbar = () => {
   const [userName, setUserName] = useState<string | null>(null);
@@ -54,16 +54,14 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <Link to={"/"}>
-        <img src={Logo} alt="logo" />
+      <h1 className="navbar_title">Market</h1>
       </Link>
       <div className="nav-elements">
         <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/" className="nav-links">Home</Link>
           </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
+
           {userName ? (
             <>
               <li>
@@ -77,7 +75,7 @@ const Navbar = () => {
             </>
           ) : (
             <li>
-              <Link to="/sign-in">Sign in</Link>
+              
             </li>
           )}
           <li>

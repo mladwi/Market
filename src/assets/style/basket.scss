@@ -1,13 +1,16 @@
 .total_section {
-  margin-top: 20px;
+  padding-top: 20px;
   text-align: center;
+  background-color: #cfc172;
 
   h3 {
+    font-family: Poppins-Regular;
     font-size: 1.5rem;
     margin-bottom: 15px;
   }
 
   .order_button {
+    font-family: Poppins-Medium;
     background-color: #28a745;
     color: #fff;
     border: none;
@@ -30,14 +33,16 @@
 }
 
 .basket_list {
-  margin-top: 30px;
+  padding-top: 30px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 35px;
+  background-color: #CFC172;
 }
 
 .basket_list li {
+  font-family: Poppins-Medium;
   width: 250px;
   gap: 10px;
   background-color: #f8f9fa;
@@ -62,6 +67,7 @@
   }
 
   button {
+    font-family: Poppins-Regular;
     background-color: #ff6b6b;
     color: white;
     border: none;
@@ -82,11 +88,13 @@
   }
 }
 .basket_p {
+  font-family: Poppins-Medium;
   text-align: center;
   font-size: 1.25rem;
   color: #777;
 }
 .basket_h2 {
+  font-family: Poppins-Regular;
   text-align: center;
   font-size: 30px;
   margin-top: 20px;
