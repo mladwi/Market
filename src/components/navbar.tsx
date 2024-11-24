@@ -1,43 +1,20 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import axios from "axios";
 import { MdFavoriteBorder } from "react-icons/md";
 import { SlBasket } from "react-icons/sl";
 import { AiOutlineClose } from "react-icons/ai";
 
-let API = "https://market777-1.onrender.com/api/auth/protected";
+
 
 const Navbar = () => {
-  const [userName, setUserName] = useState<string | null>(null);
+
   const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      const token = localStorage.getItem("token");
+ 
 
-      if (token) {
-        try {
-          const response = await axios.get(API, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          setUserName(response.data.user.name);
-        } catch (error) {
-          console.error("Ошибка при получении данных пользователя:", error);
-        }
-      }
-    };
 
-    fetchUserData();
-  }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setUserName(null);
-    window.location.reload();
-  };
 
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
@@ -62,22 +39,6 @@ const Navbar = () => {
             <Link to="/" className="nav-links">Home</Link>
           </li>
 
-          {userName ? (
-            <>
-              <li>
-                <span>{userName}</span>
-              </li>
-              <li>
-                <a onClick={handleLogout} style={{ cursor: "pointer" }}>
-                  Logout
-                </a>
-              </li>
-            </>
-          ) : (
-            <li>
-              
-            </li>
-          )}
           <li>
             <Link to={"/wishes"} className="Wishes">
               <MdFavoriteBorder />
